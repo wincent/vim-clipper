@@ -70,6 +70,7 @@ OPTIONS                                                       *clipper-options*
 
 MAPPINGS                                                     *clipper-mappings*
 
+                                                            *<Plug>ClipperClip*
                                                           *<Plug>(ClipperClip)*
 vim-clipper maps <leader>y to |<Plug>(ClipperClip)|, which sends the last-yanked
 text to Clipper. To use an alternative mapping instead, create a different one
@@ -136,10 +137,14 @@ vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 HISTORY                                                       *clipper-history*
 
+0.2 (not yet released)
+
+- Rename |<Plug>ClipperClip| to |<Plug>(ClipperClip)|.
+
 0.1 (6 July 2015)
 
-- initial release, extracted from my dotfiles
-  (https://github.com/wincent/wincent)
+- Initial release, extracted from my dotfiles
+  (https://github.com/wincent/wincent).
 
 
 -----------------------------------------------------------------------------
