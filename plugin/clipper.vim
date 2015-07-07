@@ -6,15 +6,15 @@
 if exists('g:ClipperLoaded') || &compatible || v:version < 700
   finish
 endif
-let g:ClipperLoaded = 1
+let g:ClipperLoaded=1
 
 " Temporarily set 'cpoptions' to Vim default as per `:h use-cpo-save`.
-let s:cpoptions = &cpoptions
+let s:cpoptions=&cpoptions
 set cpoptions&vim
 
 command! Clip call clipper#private#clip()
 
-let s:map = exists('g:ClipperMap') ? g:ClipperMap : 1
+let s:map=exists('g:ClipperMap') ? g:ClipperMap : 1
 if s:map
   if !hasmapto('<Plug>ClipperClip') && maparg('<leader>y', 'n') ==# ''
     nmap <unique> <leader>y :Clip<CR>
@@ -23,5 +23,5 @@ endif
 nnoremap <Plug>ClipperClip :Clip<CR>
 
 " Restore 'cpoptions' to its former value.
-let &cpoptions = s:cpoptions
+let &cpoptions=s:cpoptions
 unlet s:cpoptions
