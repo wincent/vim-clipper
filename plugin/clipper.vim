@@ -17,7 +17,7 @@ command! Clip call clipper#private#clip()
 let s:map=exists('g:ClipperMap') ? g:ClipperMap : 1
 if s:map
   if !hasmapto('<Plug>ClipperClip') && maparg('<leader>y', 'n') ==# ''
-    nmap <unique> <leader>y :Clip<CR>
+    nmap <unique> <leader>y <Plug>ClipperClip
   endif
 endif
 nnoremap <Plug>ClipperClip :Clip<CR>
