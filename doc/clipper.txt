@@ -54,7 +54,7 @@ OPTIONS                                                       *clipper-options*
                                                                  *g:ClipperMap*
   |g:ClipperMap|                                           boolean (default: 1)
 
-  Controls whether to set up the |<Plug>ClipperClip| mapping. To prevent any
+  Controls whether to set up the |<Plug>(ClipperClip)| mapping. To prevent any
   mapping from being configured, set to 0 in your |.vimrc|: >
 
     let g:ClipperMap=0
@@ -70,19 +70,19 @@ OPTIONS                                                       *clipper-options*
 
 MAPPINGS                                                     *clipper-mappings*
 
-                                                            *<Plug>ClipperClip*
-vim-clipper maps <leader>y to |<Plug>ClipperClip|, which sends the last-yanked
+                                                          *<Plug>(ClipperClip)*
+vim-clipper maps <leader>y to |<Plug>(ClipperClip)|, which sends the last-yanked
 text to Clipper. To use an alternative mapping instead, create a different one
 in your |.vimrc| instead using |:nmap|: >
 
   " Instead of <leader>y, use <leader>x.
-  nmap <leader>x <Plug>ClipperClip
+  nmap <leader>x <Plug>(ClipperClip)
 
 Note that vim-clipper will not try to set up its <leader>y mapping if any of
 the following are true:
 
 - A mapping for <leader>y already exists.
-- An alternative mapping for |<Plug>ClipperClip| has already been set up from
+- An alternative mapping for |<Plug>(ClipperClip)| has already been set up from
   a |.vimrc|.
 - The mapping has been suppressed by setting |g:ClipperMap| to 1 in your
   |.vimrc|.

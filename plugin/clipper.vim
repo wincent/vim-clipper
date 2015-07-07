@@ -16,11 +16,11 @@ command! Clip call clipper#private#clip()
 
 let s:map=exists('g:ClipperMap') ? g:ClipperMap : 1
 if s:map
-  if !hasmapto('<Plug>ClipperClip') && maparg('<leader>y', 'n') ==# ''
-    nmap <unique> <leader>y <Plug>ClipperClip
+  if !hasmapto('<Plug>(ClipperClip)') && maparg('<leader>y', 'n') ==# ''
+    nmap <unique> <leader>y <Plug>(ClipperClip)
   endif
 endif
-nnoremap <Plug>ClipperClip :Clip<CR>
+nnoremap <Plug>(ClipperClip) :Clip<CR>
 
 " Restore 'cpoptions' to its former value.
 let &cpoptions=s:cpoptions
