@@ -58,6 +58,14 @@ COMMANDS                                                     *clipper-commands*
 
 OPTIONS                                                       *clipper-options*
 
+                                                                *g:ClipperPort*
+  |g:ClipperPort|                                        number (default: 8377)
+
+  Specifies the port on which to connect to the Clipper daemon. To override
+  from the default of port 8377, set it in your |.vimrc|: >
+
+    let g:ClipperPort=31337
+<
                                                                  *g:ClipperMap*
   |g:ClipperMap|                                           boolean (default: 1)
 
