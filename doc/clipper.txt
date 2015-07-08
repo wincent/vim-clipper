@@ -4,12 +4,13 @@ CONTENTS                                                     *clipper-contents*
 
 1. Intro           |clipper-intro|
 2. Installation    |clipper-installation|
-3. Options         |clipper-options|
-4. Mappings        |clipper-mappings|
-5. Website         |clipper-website|
-6. License         |clipper-license|
-7. Authors         |clipper-authors|
-8. History         |clipper-history|
+3. Commands        |clipper-commands|
+4. Options         |clipper-options|
+5. Mappings        |clipper-mappings|
+6. Website         |clipper-website|
+7. License         |clipper-license|
+8. Authors         |clipper-authors|
+9. History         |clipper-history|
 
 
 INTRO                                                           *clipper-intro*
@@ -47,6 +48,12 @@ the following after `cd`-ing into the top-level of your Git superproject: >
 To generate help tags under Pathogen, you can do so from inside Vim with: >
 
   :call pathogen#helptags()
+
+
+COMMANDS                                                     *clipper-commands*
+
+                                                                        *:Clip*
+:Clip       Sends the last-yanked text to Clipper.
 
 
 OPTIONS                                                       *clipper-options*
