@@ -4,7 +4,7 @@
 function! clipper#private#clip() abort
   if executable('nc') == 1
     " Co-erce port to number.
-    let l:port = +(exists('g:ClipperPort') ? g:ClipperPort : 8377)
+    let l:port = +(get(g:, 'ClipperPort', 8377))
     call system('nc localhost ' . l:port, @0)
   else
     echoerr 'Clipper: nc executable does not exist'
