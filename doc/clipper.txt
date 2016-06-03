@@ -58,6 +58,19 @@ COMMANDS                                                     *clipper-commands*
 
 OPTIONS                                                       *clipper-options*
 
+                                                             *g:ClipperAddress*
+  |g:ClipperAddress|                                string (default: localhost)
+
+  Specifies the address at which to connect to the Clipper daemon. To override
+  from the default of "localhost", set it in your |.vimrc|. The main reason
+  you would want to do this is to make Clipper connect to a UNIX domain
+  socket: >
+
+    let g:ClipperAddress=~/.clipper.sock
+<
+  Note that if you want to connect using a UNIX domain socket, you must also
+  set |g:ClipperPort| to 0.
+
                                                                 *g:ClipperPort*
   |g:ClipperPort|                                        number (default: 8377)
 
@@ -66,6 +79,9 @@ OPTIONS                                                       *clipper-options*
 
     let g:ClipperPort=31337
 <
+  To connect via a UNIX domain socket, set the port number to 0, and provide
+  the path to the socket using the |g:ClipperAddress| option.
+
                                                                  *g:ClipperMap*
   |g:ClipperMap|                                           boolean (default: 1)
 
@@ -155,6 +171,8 @@ HISTORY                                                       *clipper-history*
 0.2 (not yet released)
 
 - Rename |<Plug>ClipperClip| to |<Plug>(ClipperClip)|.
+- Add |g:ClipperAddress| and support for connecting to the Clipper daemon via
+  a UNIX domain socket.
 
 0.1 (6 July 2015)
 
