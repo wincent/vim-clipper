@@ -168,7 +168,7 @@ vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 HISTORY                                                       *clipper-history*
 
-0.2 (not yet released)
+1.0 (3 June 2016)
 
 - Rename |<Plug>ClipperClip| to |<Plug>(ClipperClip)|.
 - Add |g:ClipperAddress| and support for connecting to the Clipper daemon via
