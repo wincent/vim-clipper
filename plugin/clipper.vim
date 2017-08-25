@@ -22,6 +22,14 @@ if s:map
 endif
 nnoremap <Plug>(ClipperClip) :Clip<CR>
 
+let s:auto=get(g:, 'ClipperAuto', 1)
+if s:auto && exists('##TextYankPost')
+  augroup Clipper
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call clipper#private#clip() | endif
+  augroup END
+endif
+
 " Restore 'cpoptions' to its former value.
 let &cpoptions=s:cpoptions
 unlet s:cpoptions

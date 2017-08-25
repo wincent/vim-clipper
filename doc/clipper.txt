@@ -25,7 +25,9 @@ runs in the background providing a service that exposes the local clipboard to
 tmux sessions and other processes running both locally and remotely.
 
 Specifically, vim-clipper provides a |:Clip| command, to send the last-yanked
-text to Clipper, and it sets up a <leader>y mapping that calls |:Clip|.
+text to Clipper, it sets up a <leader>y mapping that calls |:Clip|.
+Additionally, if the |TextYankPost| |autocommand| is available, it will send
+the last-yanked text to Clipper automatically.
 
 
 INSTALLATION                                             *clipper-installation*
@@ -82,6 +84,14 @@ OPTIONS                                                       *clipper-options*
   To connect via a UNIX domain socket, set the port number to 0, and provide
   the path to the socket using the |g:ClipperAddress| option.
 
+                                                                *g:ClipperAuto*
+  |g:ClipperAuto|                                          boolean (default: 1)
+
+  Controls whether to use the |TextYankPost| autocommand to route yanked text
+  to Clipper automatically. To prevent this, set to 0 in your |.vimrc|: >
+
+    let g:ClipperAuto=0
+<
                                                                  *g:ClipperMap*
   |g:ClipperMap|                                           boolean (default: 1)
 
@@ -167,6 +177,12 @@ vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 
 HISTORY                                                       *clipper-history*
+
+2.0 (25 August 2017)
+
+- Add ability to automatically send yanked text to Clipper using the
+  |TextYankPost| autocommand, and the corresponding |g:ClipperAuto| setting to
+  provide an opt-out mechanism.
 
 1.0 (3 June 2016)
 
