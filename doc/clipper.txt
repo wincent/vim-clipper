@@ -2,15 +2,16 @@
 
 CONTENTS                                                     *clipper-contents*
 
-1. Intro           |clipper-intro|
-2. Installation    |clipper-installation|
-3. Commands        |clipper-commands|
-4. Options         |clipper-options|
-5. Mappings        |clipper-mappings|
-6. Website         |clipper-website|
-7. License         |clipper-license|
-8. Authors         |clipper-authors|
-9. History         |clipper-history|
+ 1. Intro           |clipper-intro|
+ 2. Installation    |clipper-installation|
+ 3. Commands        |clipper-commands|
+ 4. Options         |clipper-options|
+ 5. Functions       |clipper-functions|
+ 6. Mappings        |clipper-mappings|
+ 7. Website         |clipper-website|
+ 8. License         |clipper-license|
+ 9. Authors         |clipper-authors|
+10. History         |clipper-history|
 
 
 INTRO                                                           *clipper-intro*
@@ -73,6 +74,12 @@ OPTIONS                                                       *clipper-options*
   Note that if you want to connect using a UNIX domain socket, you must also
   set |g:ClipperPort| to 0.
 
+  If |g:ClipperAddress| and |g:ClipperPort| provide insufficient
+  configurability (for example, because you are using a version of `nc` that
+  doesn't support UNIX sockets and want to use an alternative like
+  `socat - UNIX-CLIENT:$SOCKET`), then you can use |clipper#set_invocation()|
+  to provide an entirely custom string.
+
                                                                 *g:ClipperPort*
   |g:ClipperPort|                                        number (default: 8377)
 
@@ -83,6 +90,12 @@ OPTIONS                                                       *clipper-options*
 <
   To connect via a UNIX domain socket, set the port number to 0, and provide
   the path to the socket using the |g:ClipperAddress| option.
+
+  If |g:ClipperAddress| and |g:ClipperPort| provide insufficient
+  configurability (for example, because you are using a version of `nc` that
+  doesn't support UNIX sockets and want to use an alternative like
+  `socat - UNIX-CLIENT:$SOCKET`), then you can use |clipper#set_invocation()|
+  to provide an entirely custom string.
 
                                                                 *g:ClipperAuto*
   |g:ClipperAuto|                                          boolean (default: 1)
@@ -107,6 +120,32 @@ OPTIONS                                                       *clipper-options*
   in your |.vimrc|. For example: >
 
     let g:ClipperLoaded=1
+
+
+FUNCTIONS                                                   *clipper-functions*
+
+
+  |clipper#set_invocation()|                         *clipper#set_invocation()*
+
+  Provide a completely custom string to invoke an arbitrary executable with
+  arguments. This overrides the automatic invocation that would usually be
+  created using `nc` and the values of |g:ClipperAddress| and |g:ClipperPort|.
+  This may be necessary in environments where you want to use a UNIX domain
+  socket but the local version of `nc` does not support the `-U` switch. For
+  example: >
+
+    call clipper#set_invocation('socat - UNIX-CLIENT:/path/to/socket')
+<
+  Note: This is a function and not a setting for security reasons; only the
+  first call to |clipper#set_invocation()| will have any effect. In this way,
+  you can place the call near the start of your |vimrc| without having to
+  worry that a malicious plug-in will later overwrite it with something
+  nefarious (important because whatever is passed to this function will be
+  blindly executed with the |system()| function).
+
+  As such, even if you don't want to use this feature, it is a good
+  idea to lock it down by calling `clipper#set_invocation('')` in your
+  |vimrc|.
 
 
 MAPPINGS                                                     *clipper-mappings*
@@ -177,6 +216,10 @@ vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 
 HISTORY                                                       *clipper-history*
+
+master (not yet released)
+
+- Add ability to customize invocation with |clipper#set_invocation()|.
 
 2.0 (25 August 2017)
 
