@@ -217,7 +217,7 @@ vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 HISTORY                                                       *clipper-history*
 
-master (not yet released)
+2.1 (6 March 2019)
 
 - Add ability to customize invocation with |clipper#set_invocation()|.
 
