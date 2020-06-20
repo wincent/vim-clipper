@@ -217,6 +217,11 @@ vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 HISTORY                                                       *clipper-history*
 
+master (not yet released):
+
+- Attempt to autodetect when host platform's `nc` executable requires the `-N`
+  switch (https://github.com/wincent/vim-clipper/pull/3).
+
 2.1 (6 March 2019)
 
 - Add ability to customize invocation with |clipper#set_invocation()|.
