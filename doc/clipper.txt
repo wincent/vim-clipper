@@ -21,7 +21,7 @@ INTRO                                                           *clipper-intro*
 
                                                              *clipper-features*
 vim-clipper provides integration between Vim and Clipper
-(https://github.com/wincent/clipper), which is an OS X "launch agent" that
+(https://github.com/wincent/clipper), which is an macOS "launch agent" that
 runs in the background providing a service that exposes the local clipboard to
 tmux sessions and other processes running both locally and remotely.
 
