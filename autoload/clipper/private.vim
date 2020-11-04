@@ -43,7 +43,7 @@ function! clipper#private#executable() abort
     " - CentOS etc:
     "     Does not support or need -N.
     let l:help = system('nc -h')
-    if match(l:help, '\v\s-N\s.+shutdown>') != -1
+    if match(l:help, '\c\v\s-N\s.+shutdown>') != -1
       let s:executable = 'nc -N'
     else
       let s:executable = 'nc'
