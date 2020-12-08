@@ -224,7 +224,7 @@ This list produced with:
 
 HISTORY                                                       *clipper-history*
 
-master (not yet released):
+2.2 (8 December 2020):
 
 - Attempt to autodetect when host platform's `nc` executable requires the `-N`
   switch (https://github.com/wincent/vim-clipper/pull/3).
