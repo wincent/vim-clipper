@@ -10,8 +10,9 @@ CONTENTS                                                     *clipper-contents*
  6. Mappings        |clipper-mappings|
  7. Website         |clipper-website|
  8. License         |clipper-license|
- 9. Authors         |clipper-authors|
-10. History         |clipper-history|
+ 9. Development     |clipper-development|
+10. Authors         |clipper-authors|
+11. History         |clipper-history|
 
 
 INTRO                                                           *clipper-intro*
@@ -208,6 +209,38 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
+
+DEVELOPMENT                                               *clipper-development*
+
+Contributing patches ~
+
+Patches can be sent via mail to greg@hurrell.net, or as GitHub pull requests
+at: https://github.com/wincent/vim-clipper/pulls
+
+Cutting a new release ~
+
+At the moment the release process is manual:
+
+- Perform final sanity checks and manual testing
+- Update the |clipper-history| section of the documentation
+- Verify clean work tree:
+>
+    git status
+<
+- Tag the release:
+>
+    git tag -s -m "$VERSION release" $VERSION
+<
+- Publish the code:
+>
+    git push origin master --follow-tags
+    git push github master --follow-tags
+<
+- Produce the release archive:
+>
+    git archive -o vim-clipper-$VERSION.zip HEAD -- .
+<
+- Upload to http://www.vim.org/scripts/script.php?script_id=5217
 
 
 AUTHORS                                                       *clipper-authors*
