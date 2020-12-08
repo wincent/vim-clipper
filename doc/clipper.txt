@@ -213,6 +213,13 @@ POSSIBILITY OF SUCH DAMAGE.
 AUTHORS                                                       *clipper-authors*
 
 vim-clipper is written and maintained by Greg Hurrell <greg@hurrell.net>.
+Other contributors that have submitted patches include, in alphabetical order:
+
+  J. Eduardo
+
+This list produced with:
+
+    :read !git shortlog -s HEAD | grep -v 'Greg Hurrell' | cut -f 2-3 | column -c 72 | expand | sed -e 's/^/  /'
 
 
 HISTORY                                                       *clipper-history*
@@ -221,6 +228,8 @@ master (not yet released):
 
 - Attempt to autodetect when host platform's `nc` executable requires the `-N`
   switch (https://github.com/wincent/vim-clipper/pull/3).
+- Make autodetection work case-insensitively (patch from J Eduardo,
+  https://github.com/wincent/vim-clipper/pull/5).
 
 2.1 (6 March 2019)
 
