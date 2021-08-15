@@ -8,21 +8,33 @@ function! clipper#private#set_invocation(method) abort
 endfunction
 
 function! clipper#private#clip() abort
-  if exists('s:invocation') && s:invocation != ''
-    call system(s:invocation, @0)
-  elseif clipper#private#executable() != ''
-    let l:executable = clipper#private#executable()
-    let l:address = get(g:, 'ClipperAddress', 'localhost')
-    let l:port = +(get(g:, 'ClipperPort', 8377)) " Co-erce to number.
-    if l:port
-      " nc
-      call system(l:executable . ' ' . l:address . ' ' . l:port, @0)
+  if exists('$KITTY_WINDOW_ID')
+    " TODO: do the base64 encoding in-process instead...
+    if exists('$TMUX')
+      let l:payload=system('printf "\ePtmux;\e\e]52;c;%s\a\e\\" "$(cat - | openssl base64 -A)"', @0)
     else
-      " nc -U
-      call system(l:executable . ' -U ' . l:address, @0)
+      let l:payload=system('printf "\e]52;c;%s\a" "$(cat - | openssl base64 -A)"', @0)
+    endif
+    if !v:shell_error
+      call writefile([l:payload], '/dev/tty', 'b')
     endif
   else
-    echoerr 'Clipper: nc executable does not exist'
+    if exists('s:invocation') && s:invocation != ''
+      call system(s:invocation, @0)
+    elseif clipper#private#executable() != ''
+      let l:executable = clipper#private#executable()
+      let l:address = get(g:, 'ClipperAddress', 'localhost')
+      let l:port = +(get(g:, 'ClipperPort', 8377)) " Co-erce to number.
+      if l:port
+        " nc
+        call system(l:executable . ' ' . l:address . ' ' . l:port, @0)
+      else
+        " nc -U
+        call system(l:executable . ' -U ' . l:address, @0)
+      endif
+    else
+      echoerr 'Clipper: nc executable does not exist'
+    endif
   endif
 endfunction
 
