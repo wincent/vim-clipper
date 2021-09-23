@@ -7,19 +7,20 @@ function! clipper#private#set_invocation(method) abort
   endif
 endfunction
 
-function! clipper#private#clip() abort
+function! clipper#private#clip(...) abort
+  let l:regname = get(a:, 1, '0') " default to @0 register
   if exists('s:invocation') && s:invocation != ''
-    call system(s:invocation, @0)
+    call system(s:invocation, getreg(l:regname))
   elseif clipper#private#executable() != ''
     let l:executable = clipper#private#executable()
     let l:address = get(g:, 'ClipperAddress', 'localhost')
     let l:port = +(get(g:, 'ClipperPort', 8377)) " Co-erce to number.
     if l:port
       " nc
-      call system(l:executable . ' ' . l:address . ' ' . l:port, @0)
+      call system(l:executable . ' ' . l:address . ' ' . l:port, getreg(l:regname))
     else
       " nc -U
-      call system(l:executable . ' -U ' . l:address, @0)
+      call system(l:executable . ' -U ' . l:address, getreg(l:regname))
     endif
   else
     echoerr 'Clipper: nc executable does not exist'

@@ -22,11 +22,20 @@ if s:map
 endif
 nnoremap <Plug>(ClipperClip) :Clip<CR>
 
+function! ClipperMaybeClip(event)
+  let l:system=get(g:, 'ClipperAutoSystemOnly', 0)
+  if l:system == 1 && a:event.operator ==# 'y' && (a:event.regname == '+' || a:event.regname == '*')
+    call clipper#private#clip(a:event.regname)
+  elseif l:system == 0 && a:event.operator ==# 'y'
+    call clipper#private#clip(0)
+  endif
+endfunction
+
 let s:auto=get(g:, 'ClipperAuto', 1)
 if s:auto && exists('##TextYankPost')
   augroup Clipper
     autocmd!
-    autocmd TextYankPost * if v:event.operator ==# 'y' | call clipper#private#clip() | endif
+    autocmd TextYankPost * call ClipperMaybeClip(v:event)
   augroup END
 endif
 

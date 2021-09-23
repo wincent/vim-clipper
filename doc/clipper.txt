@@ -106,6 +106,14 @@ OPTIONS                                                       *clipper-options*
 
     let g:ClipperAuto=0
 <
+                                                      *g:ClipperAutoSystemOnly*
+  |g:ClipperAutoSystemOnly|                                boolean (default: 0)
+
+  When set to 1, |g:ClipperAuto| will only route text yanked to a system
+  register, i.e. '*' and '+', to Clipper. >
+
+    let g:ClipperAutoSystemOnly=1
+<
                                                                  *g:ClipperMap*
   |g:ClipperMap|                                           boolean (default: 1)
 
