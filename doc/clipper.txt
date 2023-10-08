@@ -172,11 +172,7 @@ the following are true:
 
 WEBSITE                                                       *clipper-website*
 
-The official vim-clipper source code repo is at:
-
-  http://git.wincent.com/vim-clipper.git
-
-A mirror exists at:
+Source code:
 
   https://github.com/wincent/vim-clipper
 
