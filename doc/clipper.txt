@@ -31,6 +31,10 @@ text to Clipper, it sets up a <leader>y mapping that calls |:Clip|.
 Additionally, if the |TextYankPost| |autocommand| is available, it will send
 the last-yanked text to Clipper automatically.
 
+vim-clipper supports both Vim and Neovim. nvim-clipper
+(https://github.com/wincent/clipper) is a streamlined, Lua-only equivalent
+designed to support only Neovim.
+
 
 INSTALLATION                                             *clipper-installation*
 
